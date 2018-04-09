@@ -1,6 +1,6 @@
 {% set name = "psy-reg" %}
-{% set version = "1.0.0" %}
-{% set sha256 = "9559901b917159f122d3c40338903477dcc42d6e3ff380bef88c5097870231b1" %}
+{% set version = "1.1.0" %}
+{% set sha256 = "76b28c6c7c36924f36762ddcfa57efec04246476f164797c658efca601bf8d44" %}
 
 package:
   name: {{ name|lower }}
