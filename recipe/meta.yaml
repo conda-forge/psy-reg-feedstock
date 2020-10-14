@@ -1,6 +1,6 @@
 {% set name = "psy-reg" %}
-{% set version = "1.2.0" %}
-{% set sha256 = "67ad162d7834fb636529cb8908e2911b7c7e7bec31d2127d8b4aeb3766e94795" %}
+{% set version = "1.3.0" %}
+{% set sha256 = "7e1cac998ab1f5645e82a925bbf7a53b10ebb3f4a2c30c82e906b7c889494d0f" %}
 
 package:
   name: {{ name|lower }}
@@ -12,27 +12,27 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1000
-  script: python setup.py install --single-version-externally-managed --record record.txt
+  number: 0
+  script: python -m pip install . --no-deps --ignore-installed -vvv
+  skip: true  # [py == 36]
 
 requirements:
-  build:
-  - python
-  - setuptools
+  host:
+    - python
+    - pip
   run:
-  - python
-  - psyplot
-  - psy-simple
-  - statsmodels
-  - scipy
+    - python
+    - {{ pin_compatible('psy-simple', max_pin='x.x') }}
+    - statsmodels
+    - scipy
 
 test:
   imports:
-  - psy_reg
+    - psy_reg
 
 about:
-  home: https://github.com/Chilipp/psy-reg
-  license: GPL-2.0
+  home: https://github.com/psyplot/psy-reg
+  license: GPL-2.0-only
   license_family: GPL
   license_file: LICENSE
   summary: Psyplot plugin for visualizing and calculating regression plots
@@ -41,7 +41,7 @@ about:
     This psyplot plugin can be used to make fits to your data and visualize
     them
   doc_url: http://psyplot.readthedocs.io/projects/psy-reg
-  dev_url: https://github.com/Chilipp/psy-reg
+  dev_url: https://github.com/psyplot/psy-reg
 
 extra:
   recipe-maintainers:
