@@ -3,7 +3,7 @@ About psy-reg
 
 Home: https://github.com/psyplot/psy-reg
 
-Package license: GPL-2.0-only
+Package license: LGPL-3.0-only
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/psy-reg-feedstock/blob/master/LICENSE.txt)
 
@@ -11,7 +11,7 @@ Summary: Psyplot plugin for visualizing and calculating regression plots
 
 Development: https://github.com/psyplot/psy-reg
 
-Documentation: http://psyplot.readthedocs.io/projects/psy-reg
+Documentation: http://psyplot.github.io/psy-reg
 
 This psyplot plugin can be used to make fits to your data and visualize
 them
@@ -133,6 +133,7 @@ Installing `psy-reg` from the `conda-forge` channel can be achieved by adding `c
 
 ```
 conda config --add channels conda-forge
+conda config --set channel_priority strict
 ```
 
 Once the `conda-forge` channel has been enabled, `psy-reg` can be installed with:
@@ -203,9 +204,9 @@ build distinct package versions.
 
 In order to produce a uniquely identifiable distribution:
  * If the version of a package **is not** being increased, please add or increase
-   the [``build/number``](https://conda.io/docs/user-guide/tasks/build-packages/define-metadata.html#build-number-and-string).
+   the [``build/number``](https://docs.conda.io/projects/conda-build/en/latest/resources/define-metadata.html#build-number-and-string).
  * If the version of a package **is** being increased, please remember to return
-   the [``build/number``](https://conda.io/docs/user-guide/tasks/build-packages/define-metadata.html#build-number-and-string)
+   the [``build/number``](https://docs.conda.io/projects/conda-build/en/latest/resources/define-metadata.html#build-number-and-string)
    back to 0.
 
 Feedstock Maintainers
