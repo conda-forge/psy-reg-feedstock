@@ -3,7 +3,7 @@ About psy-reg
 
 Home: https://github.com/psyplot/psy-reg
 
-Package license: GPL-2.0-only
+Package license: LGPL-3.0-only
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/psy-reg-feedstock/blob/master/LICENSE.txt)
 
@@ -11,7 +11,7 @@ Summary: Psyplot plugin for visualizing and calculating regression plots
 
 Development: https://github.com/psyplot/psy-reg
 
-Documentation: http://psyplot.readthedocs.io/projects/psy-reg
+Documentation: http://psyplot.github.io/psy-reg
 
 This psyplot plugin can be used to make fits to your data and visualize
 them
