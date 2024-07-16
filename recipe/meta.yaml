@@ -1,6 +1,6 @@
 {% set name = "psy-reg" %}
-{% set version = "1.4.0" %}
-{% set sha256 = "84edb1b4909adbb66e7b008de5cd152e475c50388e0c3925cbb5b80d4cacd9f0" %}
+{% set version = "1.5.0" %}
+{% set sha256 = "c8003fe474a0a26330c0492b0e704e3956413813c8e25bb5cb538de40cdf49f1" %}
 
 package:
   name: {{ name|lower }}
@@ -8,11 +8,11 @@ package:
 
 source:
   fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
-  number: 3
+  number: 0
   script: python -m pip install . --no-deps --ignore-installed -vvv
   skip: true  # [py == 36]
 
