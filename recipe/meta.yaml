@@ -1,6 +1,6 @@
 {% set name = "psy-reg" %}
-{% set version = "1.4.0" %}
-{% set sha256 = "84edb1b4909adbb66e7b008de5cd152e475c50388e0c3925cbb5b80d4cacd9f0" %}
+{% set version = "1.5.0" %}
+{% set sha256 = "c8003fe474a0a26330c0492b0e704e3956413813c8e25bb5cb538de40cdf49f1" %}
 
 package:
   name: {{ name|lower }}
@@ -8,13 +8,13 @@ package:
 
 source:
   fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
-  number: 3
-  script: python -m pip install . --no-deps --ignore-installed -vvv
-  skip: true  # [py == 36]
+  number: 0
+  skip: true  # [py<39]
+  script: {{ PYTHON }} -m pip install . --no-deps -vvv
 
 requirements:
   build:
@@ -23,30 +23,33 @@ requirements:
   host:
     - python
     - pip
+    - setuptools
+    - versioneer
+    - tomli
   run:
     - python
-    - {{ pin_compatible('psy-simple', max_pin='x.x') }}
+    - {{ pin_compatible('psy-simple', max_pin='x.x', lower_bound='1.5.0') }}
     - statsmodels
     - scipy
 
 test:
   imports:
     - psy_reg
+    - psy_reg.plotters
 
 about:
   home: https://github.com/psyplot/psy-reg
   license: LGPL-3.0-only
   license_family: GPL
   license_file:
-    - COPYING
-    - COPYING.LESSER
+    - LICENSES/
   summary: Psyplot plugin for visualizing and calculating regression plots
 
   description: |
     This psyplot plugin can be used to make fits to your data and visualize
     them
   doc_url: http://psyplot.github.io/psy-reg
-  dev_url: https://github.com/psyplot/psy-reg
+  dev_url: https://codebase.helmholtz.cloud/psyplot/psy-reg
 
 extra:
   recipe-maintainers:
