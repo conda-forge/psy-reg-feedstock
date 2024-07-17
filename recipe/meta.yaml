@@ -13,8 +13,8 @@ source:
 
 build:
   number: 0
-  script: python -m pip install . --no-deps --ignore-installed -vvv
-  skip: true  # [py == 36]
+  skip: true  # [py<39]
+  script: {{ PYTHON }} -m pip install . --no-deps -vvv
 
 requirements:
   build:
@@ -23,30 +23,33 @@ requirements:
   host:
     - python
     - pip
+    - setuptools
+    - versioneer
+    - tomli
   run:
     - python
-    - {{ pin_compatible('psy-simple', max_pin='x.x') }}
+    - {{ pin_compatible('psy-simple', max_pin='x.x', lower_bound='1.5.0') }}
     - statsmodels
     - scipy
 
 test:
   imports:
     - psy_reg
+    - psy_reg.plotters
 
 about:
   home: https://github.com/psyplot/psy-reg
   license: LGPL-3.0-only
   license_family: GPL
   license_file:
-    - COPYING
-    - COPYING.LESSER
+    - LICENSES/
   summary: Psyplot plugin for visualizing and calculating regression plots
 
   description: |
     This psyplot plugin can be used to make fits to your data and visualize
     them
   doc_url: http://psyplot.github.io/psy-reg
-  dev_url: https://github.com/psyplot/psy-reg
+  dev_url: https://codebase.helmholtz.cloud/psyplot/psy-reg
 
 extra:
   recipe-maintainers:
